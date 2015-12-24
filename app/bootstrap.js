@@ -8,8 +8,11 @@ require('./scss/style.scss');
 
 require('file?name=[name].html!./index.html_direct');
 
-$(document).ready(function(){
-	alert('document ready');
+var App = require('./app.route.js');
 
+$(document).ready(function(){
+	var myApp = new App();
+	Backbone.history.start({pushState: false});
+	
 
 });
