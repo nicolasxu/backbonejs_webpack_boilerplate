@@ -7,36 +7,32 @@ var appEntryDom = document.getElementById('app');
 var rootView, vendorView, clientView;
 
 var App = Backbone.Router.extend({
+	routeMountDom: appEntryDom,
 	routes: {
 		'': 'root', 
 		'client': 'clientModule',
 		'vendor': 'vendorModule',
 	}, 
 	clientModule: function() {
-		console.log('clientView: ', clientView);
-		
-		if(typeof clientView === 'undefined') {
-			clientView = new ClientView({el: appEntryDom});
-		}
-		clientView.render();
+	
+		this.renderRoute('clientView', ClientView);
 	},
 	vendorModule: function() {
-		console.log('vendorView: ', vendorView);
-
-		if(typeof vendorView === 'undefined') {
-			vendorView = new VendorView({el: appEntryDom});
-		}
-		vendorView.render();
+	
+		this.renderRoute('vendorView', VendorView);
 
 	},
 	root: function() {
-		
-		console.log('rootView: ', rootView);
-		if(typeof rootView === 'undefined') {
-			rootView = new RootView({el: appEntryDom});
-		}
-		rootView.render();
 
+		this.renderRoute('rootView', RootView);
+
+	}, 
+	renderRoute: function (viewName,ViewObject) {
+		// console.log('view instance', this[viewName]);
+		if(typeof this[viewName] === 'undefined') {
+			this[viewName] = new ViewObject({el:this.routeMountDom});
+		}
+		this[viewName].render();
 	}
 });
 
