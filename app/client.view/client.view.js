@@ -1,9 +1,9 @@
 
-
+var tpl = require('./client.view.tpl');
 var ClientView = Backbone.View.extend({
 	events: {},
 	initialize: function() {},
-	template: _.template('<h1> This is client view </h1>'),
+	template: _.template(tpl),
 	render: function () {
 		this.$el.html(this.template({}));
 	}

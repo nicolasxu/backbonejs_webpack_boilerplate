@@ -1,0 +1,1 @@
+<h1>This is vendor view</h1>

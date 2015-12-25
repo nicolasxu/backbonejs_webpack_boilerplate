@@ -1,8 +1,9 @@
 
+var tpl = require('./vendor.view.tpl');
 var VendorView = Backbone.View.extend({
 	events: {},
 	initialize: function() {},
-	template: _.template('<h1>This is vendor view</h1>'),
+	template: _.template(tpl),
 	render: function() {
 		this.$el.html(this.template({}));
 	}
